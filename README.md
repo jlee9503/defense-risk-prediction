@@ -12,74 +12,39 @@ Defense procurement often suffers from budget overruns, delays, and vendor risks
 
 ## 🧰 Tools Used
 
-- Python (Pandas, Scikit-learn, Requests)
+- Python (Pandas, sqlalchemy, Pathlib)
 - SQL (MS SQL Server)
-- Tableau / Streamlit (for visualization)
+- Matplotlib / Seaborn (for internal visualizations)
 - Git + VS Code
 - Docker (SQL Servcer Container)
-- Matplotlib / Seaborn (for internal visualizations)
 
 ---
 
 ## 📈 Pipeline Overview
 
 1. **Data Ingestion:**  
-   Loads multiple data sources (CSV, JSON) simulating contract records, supplier history, and known delays.
+   - Loads multiple data sources (CSV, JSON) simulating contract records, supplier history, and known delays.
 
 2. **Data Cleaning + Feature Engineering:**  
-   - Vendor history scoring  
-   - Risk feature encoding (contract size, category, timing)
+   - Identify missing values and duplicates
+   - Merge datasets using `supplier_id` and `contract_id`
+   - Risk feature encoding (contract age, contract value per month, risk score)
 
-3. **Model Training:**  
-   - Classification model (Logistic Regression or Random Forest)  
-   - Output: Probability of a contract being “high risk”
-
-4. **Output Dashboard:**  
-   Interactive dashboard displaying:
-   - Top 10 high-risk active contracts
-   - Model prediction confidence
-   - Historical delay & overrun trends
-
-5. **Automation Simulation:**  
-   - Script-based refresh pipeline  
-   - Example cron or scheduler setup (mocked)
-
----
-
-## 📊 Example Visuals
-
-(Add screenshots here of your dashboard or visualizations.)
-
----
-
-## 📜 Sample Insights
-
-- Contracts exceeding $5M with a vendor delay history >2 are 3.4x more likely to be flagged as high risk.
-- R&D projects showed a 60% higher chance of timeline slippage than sustainment contracts.
-
----
-
-## 🔒 Security Note
-
-This project uses **open-source and simulated data only**. No actual government or proprietary datasets were used.
-
----
-
-## 🧠 What I Learned
-
-- Translating business risk concepts into model features
-- Automating multi-source data workflows
-- Communicating analytic findings to non-technical users via dashboards
+3. **Exploratory Data Analysis:**  
+   - Univariate
+      - Categorical: `contract_type`, `compliance_issues`
+      - Numeric: `contract_value_million`, `expected_duration_months`, `average_delay_days`, `delay_days`, `risk_score`, `value_per_month`, `contract_age_days`
+   - Bivariate
+      - Relationship between target variable (`risk_score`) and each feature
 
 ---
 
 ## 📁 Project Status
 
-✅ Completed: Modeling, Pipeline, Dashboard  
-🚧 In Progress: Expanding classifier to include supplier fraud flagging
+✅ Completed: Setup database, Explore & Clean dataset, Exploratory Data Analysis (EDA)
+🚧 In Progress: Model Training and Evaluation
 
 ---
-
 ## 🧾 License
 
 MIT License
