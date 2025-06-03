@@ -42,6 +42,7 @@ Defense procurement often suffers from budget overruns, delays, and vendor risks
 ## 📁 Project Status
 
 ✅ Completed: Setup database, Explore & Clean dataset, Exploratory Data Analysis (EDA)
+
 🚧 In Progress: Model Training and Evaluation
 
 ---
